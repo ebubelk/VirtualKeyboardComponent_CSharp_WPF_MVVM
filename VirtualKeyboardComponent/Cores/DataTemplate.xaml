@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:VirtualKeyboardComponent.MVVM.ViewModels"
+                    xmlns:view="clr-namespace:VirtualKeyboardComponent.MVVM.Views">
+    
+    <DataTemplate DataType="{x:Type vm:HomeVM}">
+        <view:HomeView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:TextBoxDataVM}">
+        <view:TextBoxDataView />
+    </DataTemplate>
+
+</ResourceDictionary>

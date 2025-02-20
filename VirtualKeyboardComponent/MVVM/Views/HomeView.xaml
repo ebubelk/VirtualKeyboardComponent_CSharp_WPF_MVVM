@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="VirtualKeyboardComponent.MVVM.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualKeyboardComponent.MVVM.Views"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:VirtualKeyboardComponent.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:HomeVM}"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              Background="Transparent"
+              Focusable="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="PreviewMouseDown">
+                    <i:InvokeCommandAction Command="{Binding HideVirtualKeyboardCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Grid>
+
+        <Grid Grid.Column="2"
+              Background="Transparent"
+              Focusable="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="PreviewMouseDown">
+                    <i:InvokeCommandAction Command="{Binding HideVirtualKeyboardCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <ScrollViewer Style="{StaticResource CustomScrollViewerStyle}"
+                          Grid.Column="1">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                        <Label Content="TextBock Data"
+                               Height="60"
+                               FontSize="30"
+                               VerticalContentAlignment="Center"
+                               Foreground="#DBDBDB" />
+                        <TextBox Width="350"
+                                 Text="{Binding Data, Mode=TwoWay}"
+                                 Style="{StaticResource TextBoxStyle}"
+                                 Height="60"
+                                 FontSize="30"
+                                 VerticalContentAlignment="Center"
+                                 Margin="40 0 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="GotFocus">
+                                    <i:InvokeCommandAction Command="{Binding ShowVirtualKeyboardCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding ShowVirtualKeyboardCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </StackPanel>
+                    <Button Content="Gönder ve İlerle"
+                            HorizontalAlignment="Right"
+                            Margin="0 40 0 0"
+                            Style="{StaticResource MainButton}" 
+                            Command="{Binding NavigateTextBoxDataCommand}"
+                            FontSize="30"
+                            Height="60"
+                            Width="250"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

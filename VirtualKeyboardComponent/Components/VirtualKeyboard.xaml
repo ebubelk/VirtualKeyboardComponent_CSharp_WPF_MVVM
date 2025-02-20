@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="VirtualKeyboardComponent.Components.VirtualKeyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VirtualKeyboardComponent.Components"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:VirtualKeyboardComponent.MVVM.ViewModels"
+             xmlns:component="clr-namespace:VirtualKeyboardComponent.Components"
+             d:DataContext="{d:DesignInstance Type=vm:VirtualKeyboardVM}"
+             mc:Ignorable="d"
+             d:DesignHeight="200"
+             d:DesignWidth="800"
+             Background="#242424">
+    <!-- Viewbox sayesinde içeriğimiz ebeveyn alana göre ölçeklenir -->
+    <Viewbox Stretch="Uniform"
+             
+             SnapsToDevicePixels="True">
+        <Grid Margin="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Üstteki kapatma (close) butonu -->
+            <Button Style="{StaticResource CloseKeyboardButton}"
+                    Margin="5"
+                    Height="20"
+                    Width="20"
+                    Background="Transparent"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right">
+                <Image Source="/Assets/closeIcon.png"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       Stretch="Uniform" />
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding HideVirtualKeyboardCommand}"/>
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding HideVirtualKeyboardCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+            <Grid Grid.Row="1">
+                <!-- Alphabetic Klavye -->
+                <component:AlphabeticKeyboard />
+            </Grid>
+            <!-- Klavye tuşları alanı -->
+
+            <Grid Grid.Row="1">
+                <!-- Alphabetic Klavye -->
+                <component:AlphabeticKeyboard>
+                    <component:AlphabeticKeyboard.Style>
+                        <Style TargetType="component:AlphabeticKeyboard">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding KeyboardType}"
+                                             Value="Alphabetic">
+                                    <Setter Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </component:AlphabeticKeyboard.Style>
+                </component:AlphabeticKeyboard>
+
+                <!-- Numeric Klavye -->
+                <component:NumericKeyboard>
+                    <component:NumericKeyboard.Style>
+                        <Style TargetType="component:NumericKeyboard">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding KeyboardType}"
+                                             Value="Numeric">
+                                    <Setter Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </component:NumericKeyboard.Style>
+                </component:NumericKeyboard>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</UserControl>

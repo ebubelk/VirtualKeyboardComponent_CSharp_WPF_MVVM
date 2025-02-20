@@ -1,0 +1,118 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ScrollBar Modüler Parametreler -->
+    <SolidColorBrush x:Key="ScrollBarThumbBackground" Color="#dbdbdb"/>
+    <SolidColorBrush x:Key="ScrollBarButtonBackground" Color="#0f0f0f"/>
+    <CornerRadius x:Key="ScrollBarThumbCornerRadius" >4</CornerRadius>
+    <CornerRadius x:Key="ScrollBarButtonCornerRadius" >2</CornerRadius>
+    <Thickness x:Key="ScrollBarThumbBorderThickness">0</Thickness>
+    <Thickness x:Key="ScrollBarButtonBorderThickness">0</Thickness>
+    <sys:Double x:Key="ScrollBarThumbWidth">10</sys:Double>
+    <sys:Double x:Key="ScrollBarButtonWidth">8</sys:Double>
+
+    <!-- ScrollBar Thumb Style -->
+    <Style x:Key="ScrollBarThumbStyle" TargetType="Thumb">
+        <Setter Property="Width" Value="{StaticResource ScrollBarThumbWidth}" />
+        <Setter Property="BorderThickness" Value="{StaticResource ScrollBarThumbBorderThickness}" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Border Background="{StaticResource ScrollBarThumbBackground}" 
+                        CornerRadius="{StaticResource ScrollBarThumbCornerRadius}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollBar Button Style -->
+    <Style x:Key="ScrollBarButtonStyle" TargetType="RepeatButton">
+        <Setter Property="Width" Value="{StaticResource ScrollBarButtonWidth}" />
+        <Setter Property="BorderThickness" Value="{StaticResource ScrollBarButtonBorderThickness}" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="{StaticResource ScrollBarButtonBackground}" 
+                        CornerRadius="{StaticResource ScrollBarButtonCornerRadius}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollBar Style -->
+    <Style x:Key="DataGridScrollBar" TargetType="ScrollBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid>
+                        <Track Name="PART_Track" IsDirectionReversed="True">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.LineUpCommand" Style="{StaticResource ScrollBarButtonStyle}" />
+                            </Track.DecreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb Style="{StaticResource ScrollBarThumbStyle}" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.LineDownCommand" Style="{StaticResource ScrollBarButtonStyle}" />
+                            </Track.IncreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomScrollViewerStyle"
+           TargetType="ScrollViewer">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid>
+                        <!-- Grid kolon ve satır tanımları -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- İçerik sunucusu -->
+                        <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                Content="{TemplateBinding Content}"
+                                                CanContentScroll="{TemplateBinding CanContentScroll}"
+                                                Grid.Column="0"
+                                                Grid.Row="0" />
+
+                        <!-- Dikey ScrollBar -->
+                        <ScrollBar x:Name="PART_VerticalScrollBar"
+                                   Orientation="Vertical"
+                                   Style="{StaticResource DataGridScrollBar}"
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   Value="{TemplateBinding VerticalOffset}"
+                                   Maximum="{TemplateBinding ScrollableHeight}"
+                                   ViewportSize="{TemplateBinding ViewportHeight}"
+                                   Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+
+                        <!-- Yatay ScrollBar -->
+                        <ScrollBar x:Name="PART_HorizontalScrollBar"
+                                   Orientation="Horizontal"
+                                   Style="{StaticResource DataGridScrollBar}"
+                                   Grid.Column="0"
+                                   Grid.Row="1"
+                                   Value="{TemplateBinding HorizontalOffset}"
+                                   Maximum="{TemplateBinding ScrollableWidth}"
+                                   ViewportSize="{TemplateBinding ViewportWidth}"
+                                   Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

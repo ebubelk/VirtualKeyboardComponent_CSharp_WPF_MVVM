@@ -1,0 +1,931 @@
+﻿<UserControl x:Class="VirtualKeyboardComponent.Components.NumericKeyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VirtualKeyboardComponent.Components"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="clr-namespace:VirtualKeyboardComponent.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:VirtualKeyboardVM}"
+             mc:Ignorable="d"
+             d:DesignHeight="160"
+             d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <sys:Double x:Key="DefaultMinWidth">60</sys:Double>
+        <sys:Double x:Key="DefaultMinHeight">40</sys:Double>
+        <sys:Double x:Key="ShortMinWidth">90</sys:Double>
+        <sys:Double x:Key="NumberMinWidth">100</sys:Double>
+        <sys:Double x:Key="MediumMinWidth">180</sys:Double>
+        <sys:Double x:Key="SpaceMinWidth">460</sys:Double>
+    </UserControl.Resources>
+    
+    <Grid Grid.Row="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0"
+                   HorizontalAlignment="Center">
+            <Button Content="1"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="1" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="1" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="2"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="2" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="2" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="3"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="3" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="3" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+            <Button Content="'"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="'" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="'" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="&quot;"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&quot;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&quot;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="&amp;"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&amp;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&amp;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="?"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="?" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="?" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="!"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="!" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="!" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content=";"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter=";" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter=";" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Backward"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource MediumMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="BACKWARD" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="BACKWARD" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1"
+                   HorizontalAlignment="Center">
+            <Button Content="4"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="4" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="4" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="5"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="5" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="5" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="6"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="6" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="6" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="%"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="%" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="%" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="\"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="\" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="\" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="#"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="#" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="#" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="("
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="(" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="(" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content=")"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter=")" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter=")" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content=":"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter=":" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter=":" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Enter"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource MediumMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding HideVirtualKeyboardCommand}"
+                                               CommandParameter="ENTER" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding HideVirtualKeyboardCommand}"
+                                               CommandParameter="ENTER" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="2"
+                   HorizontalAlignment="Center">
+            <Button Content="7"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="7" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="7" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="8"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="8" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="8" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="9"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="9" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="9" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="&lt;"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&lt;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&lt;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="&gt;"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&gt;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="&gt;" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="@"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="@" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="@" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="_"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="_" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="_" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="="
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="=" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="=" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="/"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="/" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="/" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="-"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="-" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="-" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="+"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="+" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="+" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="*"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource DefaultMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="*" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="*" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="3"
+                   HorizontalAlignment="Center">
+            <Button Content="ABC"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="ABC" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="ABC" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="0"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource NumberMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="0" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="0" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Space"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource SpaceMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="SPACE" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="SPACE" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="&lt;"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource ShortMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="LEFT" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="ŞEFT" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="&gt;"
+                    Style="{StaticResource KeyboardButton}"
+                    MinWidth="{StaticResource ShortMinWidth}"
+                    MinHeight="{StaticResource DefaultMinHeight}">
+                <i:Interaction.Triggers>
+                    <!-- Mouse destekli -->
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="RIGHT" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+
+                    <!-- Dokunmatik destekli -->
+                    <i:EventTrigger EventName="TouchDown">
+                        <i:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                               CommandParameter="RIGHT" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchUp">
+                        <i:InvokeCommandAction Command="{Binding KeyReleaseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</UserControl>
