@@ -46,12 +46,7 @@
                 </i:Interaction.Triggers>
             </Button>
 
-            <Grid Grid.Row="1">
-                <!-- Alphabetic Klavye -->
-                <component:AlphabeticKeyboard />
-            </Grid>
             <!-- Klavye tuşları alanı -->
-
             <Grid Grid.Row="1">
                 <!-- Alphabetic Klavye -->
                 <component:AlphabeticKeyboard>
